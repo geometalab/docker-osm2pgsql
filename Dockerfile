@@ -20,5 +20,3 @@ RUN mkdir src &&\
   make &&\
   make install
 
-ENTRYPOINT ["/bin/bash"]
-
