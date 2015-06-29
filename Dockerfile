@@ -2,6 +2,7 @@ FROM ubuntu:14.04
 
 MAINTAINER Mirko Stocker <mirko@stocker.email>
 
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y git-core \
   build-essential libxml2-dev libgeos++-dev libpq-dev \
   libboost-dev libboost-system-dev libboost-filesystem-dev \
