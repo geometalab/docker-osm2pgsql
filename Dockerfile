@@ -2,13 +2,27 @@ FROM ubuntu:14.04
 
 MAINTAINER Mirko Stocker <mirko@stocker.email>
 
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y git-core \
-  build-essential libxml2-dev libgeos++-dev libpq-dev \
-  libboost-dev libboost-system-dev libboost-filesystem-dev \
-  libboost-thread-dev libbz2-dev libproj-dev libtool automake \
-  libprotobuf-c0-dev protobuf-c-compiler lua5.2 \
-  liblua5.2-0 liblua5.2-dev liblua5.1-0
+RUN DEBIAN_FRONTEND=noninteractive apt-get update &&\
+    DEBIAN_FRONTEND=noninteractive apt-get install -y\
+    git-core\
+    build-essential\
+    libxml2-dev\
+    libgeos++-dev\
+    libpq-dev\
+    libboost-dev\
+    libboost-system-dev\
+    libboost-filesystem-dev\
+    libboost-thread-dev\
+    libbz2-dev\
+    libproj-dev\
+    libtool\
+    automake \
+    libprotobuf-c0-dev\
+    protobuf-c-compiler\
+    lua5.2 \
+    liblua5.2-0\
+    liblua5.2-dev\
+    liblua5.1-0
 
 ENV HOME /root
 
@@ -20,4 +34,3 @@ RUN mkdir src &&\
   ./configure &&\
   make &&\
   make install
-
