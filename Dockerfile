@@ -5,24 +5,19 @@ MAINTAINER Mirko Stocker <mirko@stocker.email>
 RUN DEBIAN_FRONTEND=noninteractive apt-get update &&\
     DEBIAN_FRONTEND=noninteractive apt-get install -y\
     git-core\
-    build-essential\
-    libxml2-dev\
-    libgeos++-dev\
-    libpq-dev\
+    make\
+    cmake\
+    g++\
     libboost-dev\
     libboost-system-dev\
     libboost-filesystem-dev\
-    libboost-thread-dev\
+    libexpat1-dev\
+    zlib1g-dev\
     libbz2-dev\
+    libpq-dev\
     libproj-dev\
-    libtool\
-    automake \
-    libprotobuf-c0-dev\
-    protobuf-c-compiler\
-    lua5.2 \
-    liblua5.2-0\
-    liblua5.2-dev\
-    liblua5.1-0
+    lua5.2\
+    liblua5.2-dev
 
 ENV HOME /root
 
@@ -30,7 +25,8 @@ RUN mkdir src &&\
   cd src &&\
   git clone https://github.com/openstreetmap/osm2pgsql.git &&\
   cd osm2pgsql &&\
-  ./autogen.sh &&\
-  ./configure &&\
+  mkdir build &&\
+  cd build &&\
+  cmake .. &&\
   make &&\
   make install
